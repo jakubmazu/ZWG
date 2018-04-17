@@ -1,0 +1,142 @@
+﻿<Window x:Class="test.Main2"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:converter="clr-namespace:test"
+		mc:Ignorable="d"
+		Title="TestGenerator" Height="900" Width="1600" WindowState="Maximized" Background="White">
+	<Window.Resources>
+		<converter:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
+		<Style TargetType="Button">
+			<Setter Property="BorderBrush" Value="Black" />
+			<Setter Property="Background" Value="White" />
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="ToggleButton">
+			<Setter Property="BorderBrush" Value="Black" />
+			<Setter Property="Background" Value="White" />
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="MenuItem">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="Label">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="TextBox">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+            <Setter Property="BorderBrush" Value="Black"/>
+        </Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="10*"/>
+		</Grid.RowDefinitions>
+		<Grid x:Name="Top" Grid.Row="0">
+			
+			<StackPanel>
+			<DockPanel>
+				<Menu DockPanel.Dock="Top">
+						<MenuItem Header="_Plik">
+							<MenuItem Header="Nowy test"/>
+							<MenuItem Header="Otwórz test"/>
+							<MenuItem Header="Zapisz test"/>
+							<MenuItem x:Name="Exit" Header="Wyjście" Click="Exit_Click"/>
+						</MenuItem>
+						<MenuItem Header="_Ustawienia">
+							<MenuItem Header="Motyw">
+								<MenuItem Header="Biały"/>
+								<MenuItem Header="Czarny"/>
+								<MenuItem Header="Kolor"/>
+							</MenuItem>
+						</MenuItem>
+						<MenuItem Header="Profil">
+							<MenuItem Header="Zmień nazwę"/>
+							<MenuItem Header="Zmień hasło"/>
+							<MenuItem x:Name="Wyloguj" Header="Wyloguj" Click="Wyloguj_Click"/>
+						</MenuItem>
+
+					</Menu>
+			</DockPanel>
+			</StackPanel>
+			<StackPanel>
+				<WrapPanel HorizontalAlignment="Right">
+					<Label Content="zalogowany:" Padding="5" Margin="10,10,0,0"/>
+					<TextBlock x:Name="zalogowany" Padding="5" Margin="0,10,10,0" Text="konto publiczne"/>
+				</WrapPanel>
+				<WrapPanel>
+					<Label Content="Połączenie z bazą danych:" Margin="10,10,-3,10" Padding="5"/>
+					<Label x:Name="TextPolBaza" Content="brak połączenia" Margin="0,10,10,10" Padding="5"/>
+					<ToggleButton x:Name="buttonPolBaza"  Content="konfiguruj połączenie" Margin="10" Padding="5" Click="buttonPolBaza_Click"/>
+						<WrapPanel Visibility="{Binding ElementName=buttonPolBaza, Path=IsChecked, Converter={StaticResource BoolVisibilityConverter}}">
+							<Label Content="login:" Margin="10,10,0,10" Padding="5"/>
+							<TextBox x:Name="TextBLogin" MinWidth="100" Margin="10,10,10,10" Padding="5"/>
+							<Label Content="hasło:" Margin="10,10,0,10" Padding="5"/>
+							<PasswordBox x:Name="BPassword" MinWidth="100" Margin="10,10,10,10" Padding="5"/>
+							<Label Content="źródło:" Margin="10,10,0,10" Padding="5"/>
+							<TextBox x:Name="BSource" MinWidth="100" Margin="10,10,10,10" Padding="5"/>
+							<Button x:Name="buttonBPolacz" Click="buttonBPolacz_Click" Content="połącz z bazą" Width="100" Margin="10,10,10,10" Padding="5"/>
+						</WrapPanel>
+				</WrapPanel>
+			</StackPanel>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+			<Grid Grid.Column="0" >
+				<StackPanel>
+					<ToggleButton x:Name="buttonGenerowanie" Content="Generowanie testu" Padding="5" Margin="10,10,10,10"/>
+					<GroupBox x:Name="PopGenerowanie" Visibility="{Binding ElementName=buttonGenerowanie, Path=IsChecked, Converter={StaticResource BoolVisibilityConverter}}" Padding="5" Margin="10">
+						<StackPanel>
+							<WrapPanel>
+								<Label Content="Nazwa testu:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+								<TextBox x:Name="TextNazwaTestu"  MinWidth="100" Margin="10" Padding="5"/>
+							</WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Tytuł testu:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+                                <TextBox x:Name="TextTytulTestu"  MinWidth="100" Margin="10" Padding="5"/>
+                            </WrapPanel>
+                            <WrapPanel>
+								<Label Content="Liczba pytań:"  Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+								<TextBox x:Name="TextLiczbaPytan"  MinWidth="100" Margin="10" Padding="5"/>
+								<Label x:Name="minPytan" Content="1" Padding="5" Margin="10,10,0,10"/>
+								<Slider Value="{Binding ElementName=TextLiczbaPytan, Path=Text}" Padding="5" Margin="0,15,0,10" Width="150" IsSnapToTickEnabled="True" Minimum="{Binding ElementName=minPytan, Path=Content}" Maximum="{Binding ElementName=maxPytan, Path=Content}"/>
+								<Label x:Name="maxPytan" Content="50" Padding="5" Margin="0,10,10,10"/>
+							</WrapPanel>
+							<WrapPanel>
+								<Label Content="Liczba odpowiedzi:"  Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+								<TextBox x:Name="TextLiczbaOdp" Text="4" MinWidth="100" Margin="10" Padding="5"/>
+								<Label x:Name="minOdp" Content="2" Padding="5" Margin="10,10,0,10"/>
+								<Slider Value="{Binding ElementName=TextLiczbaOdp, Path=Text}" Padding="5" Margin="0,15,0,10" Width="150" IsSnapToTickEnabled="True" Minimum="{Binding ElementName=minOdp, Path=Content}" Maximum="{Binding ElementName=maxOdp, Path=Content}"/>
+								<Label x:Name="maxOdp" Content="5" Padding="5" Margin="0,10"/>
+							</WrapPanel>
+							<Button x:Name="buttonGenerujTest" Content="Generuj test" Click="buttonGenerujTest_Click" HorizontalAlignment="Right" Margin="10,10,100,10" Padding="5" Width="100"/>
+						</StackPanel>
+					</GroupBox>
+					<ToggleButton x:Name="buttonSprawdzanie" Content="Sprawdzanie testu" Padding="5" Margin="10,10,10,10" />
+					<GroupBox Visibility="{Binding ElementName=buttonSprawdzanie, Path=IsChecked, Converter={StaticResource BoolVisibilityConverter}}" Padding="5" Margin="10">
+						<StackPanel>
+							<WrapPanel>
+								<Label Content="Id testu:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+								<TextBox x:Name="TextIdTestuPob" MinWidth="100" Margin="10" Padding="5"/>
+								<Button x:Name="buttonPobierzTesty" Click="buttonPobierzTesty_Click" Content="Pobierz" Width="100" Margin="10" Padding="5"/>
+							</WrapPanel>
+							<WrapPanel>
+								<Label Content="Ilość testów:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
+								<TextBlock x:Name="TextIloscPobrTestow" MinWidth="100" Margin="10" Padding="5"/>
+								<Button x:Name="buttonSprawdz" Content="Sprawdź" Width="100" Margin="10" Padding="5" Click="buttonSprawdz_Click"/>
+							</WrapPanel>
+						</StackPanel>
+					</GroupBox>
+				</StackPanel>
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>

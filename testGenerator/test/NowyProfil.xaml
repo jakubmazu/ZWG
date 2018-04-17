@@ -1,0 +1,54 @@
+﻿<Window x:Class="test.NowyProfil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test"
+        mc:Ignorable="d"
+        Title="Nowy Profil" Height="300" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="White" WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+			<Style TargetType="Button">
+			<Setter Property="BorderBrush" Value="Black" />
+			<Setter Property="Background" Value="White" />
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="Label">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="TextBox">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+			<Setter Property="BorderBrush" Value="Black"/>
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="50*"></ColumnDefinition>
+			<ColumnDefinition Width="350*" MinWidth="350"></ColumnDefinition>
+			<ColumnDefinition Width="50*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="60"></RowDefinition>
+			<RowDefinition Height="10*" MinHeight="160"></RowDefinition>
+			<RowDefinition Height="0*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Column="1">
+			<Label Content="TestGenerator" HorizontalAlignment="Center" VerticalAlignment="Top" Height="72" FontSize="48" HorizontalContentAlignment="Center" FontFamily="Maiandra GD" Margin="10,0,10,10"/>
+		</StackPanel>
+		<StackPanel Grid.Column="1" Grid.Row="1">
+			<WrapPanel>
+				<Label Content="login:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
+				<TextBox x:Name="TextNLogin" Padding="5" Margin="0,10,10,10" MinWidth="150"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label Content="hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
+				<PasswordBox x:Name="NewPassword" Padding="5" Margin="0,10,10,10" MinWidth="150" BorderBrush="Black"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label Content="powtórz hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
+				<PasswordBox x:Name="NewPassword2" Padding="5" Margin="0,10,10,10" MinWidth="150" BorderBrush="Black"/>
+			</WrapPanel>
+			<Label x:Name="KomNP" Content="" Padding="1" Margin="10,0,10,0" HorizontalAlignment="Center" FontSize="8" Foreground="#FFF90000"/>
+			<Button x:Name="buttonStworzKonto" Content="stwórz konto" Padding="5" HorizontalAlignment="Right" Margin="0"  Click="buttonStworzKonto_Click"/>
+		</StackPanel>
+	</Grid>
+</Window>

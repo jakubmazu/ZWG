@@ -1,0 +1,37 @@
+﻿<Window x:Class="test.Logowanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test"
+        mc:Ignorable="d"
+        Title="Logowanie" Height="360" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="White" WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="50*"></ColumnDefinition>
+			<ColumnDefinition Width="350*" MinWidth="350"></ColumnDefinition>
+			<ColumnDefinition Width="50*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="60"></RowDefinition>
+			<RowDefinition Height="auto" MinHeight="160"></RowDefinition>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Column="1">
+			<Label Content="TestGenerator" HorizontalAlignment="Center" VerticalAlignment="Top" Height="72" FontSize="48" HorizontalContentAlignment="Center" FontFamily="Maiandra GD" Margin="10,0,10,10"/>
+		</StackPanel>
+		<StackPanel Grid.Column="1" Grid.Row="1">
+			<WrapPanel>
+				<Label Content="login:" Padding="5" Margin="10" Width="100" FontFamily="Maiandra GD" HorizontalContentAlignment="Right"/>
+				<TextBox x:Name="TextLogin" Padding="5" Margin="0,10,10,10" Text="" Width="150" BorderBrush="Black" Background="White"/>
+			</WrapPanel>
+			<WrapPanel>
+				<Label Content="hasło:" Padding="5" Margin="10" Width="100" FontFamily="Maiandra GD" HorizontalContentAlignment="Right"/>
+				<PasswordBox x:Name="Password" Padding="5" Margin="0,10,10,10" Width="150" KeyDown="OnKeyDownHandler" BorderBrush="Black"/>
+			</WrapPanel>
+			<Label x:Name="KomH" Content="" HorizontalAlignment="Center" Padding="5" Margin="40,0,0,0" FontSize="8" FontFamily="Maiandra GD" Foreground="#FFF90000"/>
+			<Button x:Name="buttonZaloguj" Content="zaloguj" Padding="5" Margin="40,10,10,10" Width="100" FontFamily="Maiandra GD" Click="buttonZaloguj_Click" Background="White" BorderBrush="Black"/>
+			<Button x:Name="buttonNowyProfil" Content="nowe konto" Width="100" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Background="White" Click="buttonNowyProfil_Click" BorderBrush="Black"/>
+			<Button x:Name="buttonPubliczny" Content="konto publiczne" Width="100" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Background="White" Click="buttonPubliczny_Click" BorderBrush="Black"/>
+		</StackPanel>
+	</Grid>
+</Window>
