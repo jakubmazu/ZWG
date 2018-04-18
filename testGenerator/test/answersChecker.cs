@@ -58,7 +58,7 @@ namespace test
 
 
             //deklaracja rozmiaru tablicy odpowiedzi
-            answers = new string[count, questionNumber];
+            answers = new string[count, questionNumber+1];
 
             //wpisywanie odczytanych odpowiedzi do tabeli
             for (int o = 0; o < count; o++)
@@ -66,12 +66,12 @@ namespace test
                 check = reader.ReadLine();
                 words = check.Split(z);
 
-                for (int i = 0; i < questionNumber; i++)
+                for (int i = 0; i < questionNumber+1; i++)
                 {
                     answers[o, i] = words[i + 2];
-                    //Console.Write(" " + answers[o, i]);
+                    Console.Write(" " + answers[o, i]);
                 }
-                //Console.WriteLine(" ");
+                Console.WriteLine(" ");
             }
             reader.Close();
         }
