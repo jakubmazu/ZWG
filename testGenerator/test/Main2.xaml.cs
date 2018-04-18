@@ -36,6 +36,7 @@ namespace test
             //int id =  connector.writeNewTestInfo(TextNazwaTestu.Text, Int32.Parse(TextLiczbaPytan.Text), Int32.Parse(TextLiczbaOdp.Text));
             int id = 5;
 
+            // zadne zmiany - tylko do testu - usunac ten komantarz
             int liczbaPytan = Int32.Parse(TextLiczbaPytan.Text);
             int liczbaOdpowiedzi = Int32.Parse(TextLiczbaOdp.Text);
 
