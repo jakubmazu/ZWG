@@ -45,8 +45,10 @@ namespace test
             string tytulTestu = TextTytulTestu.Text;
 
             //string lokalizacjaExcelPytania = ... //pobrać a okienka aplikacji
-            string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
-            
+            //string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
+            string lokalizacjaExcelPytania = "d:\\zestawPytań2";    //KUBA TU WPISZ SWOJĄ LOKALIZAJĘ PLIKU, PAMIĘTAJ O PODWÓJNYM \\ (SLESZU) PRZY PODAWANIU FOLDERÓW
+
+
             //bool checkbox // wybór ilości poprawnych odp - true tylko 1 poprawna
 
             // lista obiektow Pytanie, wczytanie do niej pytan z Excela i wyswietlenie wszystkich pytan

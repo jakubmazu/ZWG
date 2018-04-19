@@ -93,22 +93,6 @@ namespace test
                 //listaPytan[aktualnePytanie].WyswietlPytanie();
             }
 
-            // wyswietlenie wszystich pytan
-            //for (int i = 0; i < listaPytan.Count(); i++)
-            //{
-            //    listaPytan[i].WyswietlPytanie();
-            //}
-
-            // czeka na wcisniecie klawisza ESC aby kontynuowac
-            //Console.WriteLine("\n\nPress ESC to stop");
-            //do
-            //{
-            //    while (!Console.KeyAvailable)
-            //    {
-            //        // Do something
-            //    }
-            //} while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-
             //cleanup
             GC.Collect();
             GC.WaitForPendingFinalizers();
