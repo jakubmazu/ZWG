@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LosowanieBezPowtorzen.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="ReadFromExcel.cs" />
     <Page Include="Logowanie.xaml">

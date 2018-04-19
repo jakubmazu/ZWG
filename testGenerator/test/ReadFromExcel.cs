@@ -13,7 +13,7 @@ namespace test
     public class ReadFromExcel
     {
         //public static void Read()
-        internal static List<Pytanie> Read()
+        internal static List<Pytanie> Read(string lokalizacjaExcela)
         {
             List<Pytanie> listaPytan = new List<Pytanie>();               // lista obiektów Pytanie (treść, odpowiedzi i inne)
 
@@ -21,10 +21,10 @@ namespace test
             Excel.Application xlApp = new Excel.Application();
 
             // !!!!!!!!!!!!!!!! tu zmienic lokalizacje pliku tak zeby wystarczylo sama nazwe pliku podac i nie trzeba bylo podawac lokalizacji!!!!!!!!!!!!!!!!!
-            //Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"D:\Marcin\Szkoła\Polibuda\[INF mgr] I rok I semestr (2018 lato)\Zastosowania inform. w gospod\P - Zastosowania inform. w gospod\Repo - projekt\Questions\Questions\bin\Debug\zestawPytań2.xlsx");
             //Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"zestawPytań2.xlsx");
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\kubam\Downloads\zestawPytań2.xlsx");
-
+            //Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\kubam\Downloads\zestawPytań2.xlsx");
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(lokalizacjaExcela.ToString());
+            
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
 
@@ -43,7 +43,7 @@ namespace test
             string readD = "";
             string readSekwencjaOdpowiedzi = "";
 
-            for (int i = 1; i <= rowCount; i++) // iteracja po wierszach excela
+            for (int i = 2; i <= rowCount; i++) // iteracja po wierszach excela, od 2 bo pierwszy wiersz to nazwy kolumn
             {
                 int aktualnyNrKolumny = 1;      // numer kolumny z ktorej wczytujemy pytanie, od niej zaczynamy czytac komurki w wierszach
 
