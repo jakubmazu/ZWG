@@ -45,16 +45,21 @@ namespace test
             string tytulTestu = TextTytulTestu.Text;
 
             //string lokalizacjaExcelPytania = ... //pobrać a okienka aplikacji
-            //string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
-            string lokalizacjaExcelPytania = "d:\\zestawPytań2";    //KUBA TU WPISZ SWOJĄ LOKALIZAJĘ PLIKU, PAMIĘTAJ O PODWÓJNYM \\ (SLESZU) PRZY PODAWANIU FOLDERÓW
+            string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
+            //string lokalizacjaExcelPytania = "d:\\zestawPytań2";    //KUBA TU WPISZ SWOJĄ LOKALIZAJĘ PLIKU, PAMIĘTAJ O PODWÓJNYM \\ (SLESZU) PRZY PODAWANIU FOLDERÓW
 
 
             //bool checkbox // wybór ilości poprawnych odp - true tylko 1 poprawna
 
             // lista obiektow Pytanie, wczytanie do niej pytan z Excela i wyswietlenie wszystkich pytan
-            List<Pytanie> wszystkiePytania = new List<Pytanie>();
-            wszystkiePytania = ReadFromExcel.Read(lokalizacjaExcelPytania);
-
+            ////////////////////////////////////////////////////////////////////////////////////
+            ///  DLA ANI /////
+            ////////////////////////////////////////////////////////////////////////////////////
+            //string lokalizacjaExcelPytania = "NIC";                       // Tutaj Ania uzupełni
+            List <Pytanie> wszystkiePytania = new List<Pytanie>();          //Marcina zostawić
+            wszystkiePytania = ReadFromExcel.Read(lokalizacjaExcelPytania); //tego Martcin potrzebuje
+            int liczbaWszystkichPytanń = wszystkiePytania.Count();          // to dla Ani
+            ////////////////////////////////////////////////////////////////////////////////////
 
             int mniejszaIloscPytan = 0;                         //potrzebne do tego gdy uzytkownik poda ze chce test z wieksza liczba pytan niz ja posiada
             if (liczbaPytan > wszystkiePytania.Count())
