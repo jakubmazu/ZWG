@@ -10,7 +10,7 @@ using System.IO;
 
 namespace test
 {
-    public class ExportToPdf
+    public class ExportToPdfv2
     {
         /// <summary>
         /// Generowanie testu *.pdf z pytan wczytanych z Excela
@@ -18,9 +18,7 @@ namespace test
         /// <param name="listaPytan">Lista obiektow typu Pytanie wczytana z Excela</param>
         /// <param name="id">id jest wartoscia z bazy danych</param>
         /// <param name="nazwaTestu">skor dla id testu</param>
-        /// <param name="liczbyBezPowtarzania">losowe liczby bez powtorzen zeby pytania byly w losowej kolejnosci</param>
-        /// <param name="mniejszaIloscPytan">ilosc pytan jaka ma byc wypisana</param>
-        public static void GenerateTest(List<Pytanie> listaPytan, int id, string nazwaTestu, int[] liczbyBezPowtarzania, int mniejszaIloscPytan)
+        public static void GenerateTest(List<Pytanie> listaPytan, int id, string nazwaTestu, int iloscPytan)
         {
             // moje proby i wypociny
             Document doc = new Document(PageSize.A4);
@@ -62,13 +60,17 @@ namespace test
 
 
                 Paragraph pytania = new Paragraph();
-                for (int i = 0; i < mniejszaIloscPytan; i++)
+                for (int i = 0; i < iloscPytan; i++)
                 {
-                    //pytania.Add(new Phrase(i + 1 + ". " + listaPytan[liczbyBezPowtarzania[i] - 1].GetTresc().ToString() + "\n", f_12_bold));        // numer i tresc pytania
-                    //pytania.Add(new Phrase("           a: " + listaPytan[liczbyBezPowtarzania[i] - 1].GetA().ToString() + "\n", f_12_normal));   // odpowiedz A
-                    //pytania.Add(new Phrase("           b: " + listaPytan[liczbyBezPowtarzania[i] - 1].GetB().ToString() + "\n", f_12_normal));   // odpowiedz B
-                    //pytania.Add(new Phrase("           c: " + listaPytan[liczbyBezPowtarzania[i] - 1].GetC().ToString() + "\n", f_12_normal));   // odpowiedz C
-                    //pytania.Add(new Phrase("           d: " + listaPytan[liczbyBezPowtarzania[i] - 1].GetD().ToString() + "\n", f_12_normal));   // odpowiedz D
+                    pytania.Add(new Phrase(i + 1 + ". " + listaPytan[i].GetTresc().ToString() + "\n", f_12_bold));        // numer i tresc pytania
+
+                    int unicode = 97;   // do listowania odpowiedzi a,b,d,c
+                    for (int j = 0; j < listaPytan[i].listaOdpowiedzi.Count(); j++)
+                    {
+                        char character = (char) unicode;
+                        pytania.Add(new Phrase("           " + character.ToString() + ": " + listaPytan[i].listaOdpowiedzi[j].GetTrescOdpowiedz().ToString() + "\n", f_12_normal));   // odpowiedzi
+                        unicode++;
+                    }
                 }
                 pytania.Alignment = Element.ALIGN_JUSTIFIED;
                 doc.Add(pytania);

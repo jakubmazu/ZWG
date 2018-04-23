@@ -34,7 +34,7 @@ namespace test
         private void buttonGenerujTest_Click(object sender, RoutedEventArgs e)
         {
             //int id =  connector.writeNewTestInfo(TextNazwaTestu.Text, Int32.Parse(TextLiczbaPytan.Text), Int32.Parse(TextLiczbaOdp.Text));
-            int id = 5;                 // do testow
+            int id = 5;                   // do testow
 
             int liczbaPytan = Int32.Parse(TextLiczbaPytan.Text);
             //int liczbaPytan = 7;        // do testow
@@ -42,12 +42,10 @@ namespace test
             //int liczbaOdpowiedzi = 5;   // do testow
 
             string nazwaTestu = TextNazwaTestu.Text;
-            string tytulTestu = TextTytulTestu.Text;
-
+            
             //string lokalizacjaExcelPytania = ... //pobrać a okienka aplikacji
             string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
             //string lokalizacjaExcelPytania = "d:\\zestawPytań2";    //KUBA TU WPISZ SWOJĄ LOKALIZAJĘ PLIKU, PAMIĘTAJ O PODWÓJNYM \\ (SLESZU) PRZY PODAWANIU FOLDERÓW
-
 
             //bool checkbox // wybór ilości poprawnych odp - true tylko 1 poprawna
 
@@ -57,25 +55,31 @@ namespace test
             ////////////////////////////////////////////////////////////////////////////////////
             //string lokalizacjaExcelPytania = "NIC";                       // Tutaj Ania uzupełni
             List <Pytanie> wszystkiePytania = new List<Pytanie>();          //Marcina zostawić
-            wszystkiePytania = ReadFromExcel.Read(lokalizacjaExcelPytania); //tego Martcin potrzebuje
-            int liczbaWszystkichPytanń = wszystkiePytania.Count();          // to dla Ani
+            wszystkiePytania = ReadFromExcelv2.Read(lokalizacjaExcelPytania); //tego Marcin potrzebuje
+            int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();                       // TO JEST ŹLE, TAK NIE MOZE BYĆ, NIE MAM POMYSŁU JAK TO ZEMIENIĆ (MARCIN)              
+            int liczbaWszystkichPytan = wszystkiePytania.Count();          // to dla Ani
+
             ////////////////////////////////////////////////////////////////////////////////////
 
-            int mniejszaIloscPytan = 0;                         //potrzebne do tego gdy uzytkownik poda ze chce test z wieksza liczba pytan niz ja posiada
-            if (liczbaPytan > wszystkiePytania.Count())
-            {
-                mniejszaIloscPytan = wszystkiePytania.Count();  // jezeli uzytkownik chce wiecej pytan niz posiada to robimy tyle ile posiada
-            }
-            else mniejszaIloscPytan = liczbaPytan;              // jezeli uzytkownik chce mniej pytan niz posiada w zbiorze to robimy tyle ile on chce
+            //////////////// NIEPOTRZEBNE JUZ ///////////////////////////////////////
+            //int mniejszaIloscPytan = 0;                         //potrzebne do tego gdy uzytkownik poda ze chce test z wieksza liczba pytan niz ja posiada
+            //if (liczbaPytan > wszystkiePytania.Count())
+            //{
+            //    mniejszaIloscPytan = wszystkiePytania.Count();  // jezeli uzytkownik chce wiecej pytan niz posiada to robimy tyle ile posiada
+            //}
+            //else mniejszaIloscPytan = liczbaPytan;              // jezeli uzytkownik chce mniej pytan niz posiada w zbiorze to robimy tyle ile on chce
+
 
             //losowanie bez powtorzen zeby pytania byly w losowej kolejnosci
-            int[] liczbyBezPowtorzen = new int[mniejszaIloscPytan];
-            liczbyBezPowtorzen = LosowanieBezPowtorzen.Losowanie(wszystkiePytania.Count(), mniejszaIloscPytan);     // ze wszystki pytan losujemy mniejsza liczbe pytan (ktora podal uzytkownik, chyba ze jest ich mniej to losujemy wszystko)
+            int[] liczbyBezPowtorzen = new int[liczbaWszystkichPytan];
+            liczbyBezPowtorzen = LosowanieBezPowtorzen.Losowanie(wszystkiePytania.Count(), liczbaWszystkichPytan);     // ze wszystki pytan losujemy mniejsza liczbe pytan (ktora podal uzytkownik, chyba ze jest ich mniej to losujemy wszystko)
 
-            // tu stworzyc nowa liste z mniejsza liczba pytania z listy wszystkich pytan
+            // nowa lista wszystkich pytan w losowej kolejnosci pytania i odpowiedzi
+            // ZROBIC IF'A BOOL CZY MAJA BYC PYTANIA W LOSOWEJ KOLEJNOSCI I OSOBNO CZY ODPOWIEDZI W LOSOWEJ, JESLI TAK TO POMIESZAC PYTANIA
+            wszystkiePytania = Pomieszaj.Losowo(wszystkiePytania);      // pomieszanie wszystkich pytan i odpowiedzi
 
             // generowanie pliku *.pdf z pytaniami do testu (wczytanymi z Excela)
-            ExportToPdf.GenerateTest(wszystkiePytania, id, tytulTestu, nazwaTestu, liczbyBezPowtorzen, mniejszaIloscPytan);       // TO BEDZIE DZIALAC JAK TO OPRACUJEMY
+            ExportToPdfv2.GenerateTest(wszystkiePytania, id, nazwaTestu, liczbaPytan);       // TO BEDZIE DZIALAC JAK TO OPRACUJEMY
             
             //do testow stworzono idTestu I nemeTest, potem "idTestu" bedzie zwracane z bazy a uzytkownik bedzie podawal "nameTest"
             // generowanie klucza odpowiedzi do pliku *.csv, zeby potem ten plik wczytac do bazy danych

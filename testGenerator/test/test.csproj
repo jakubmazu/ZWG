@@ -65,9 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExportToPdfv2.cs" />
     <Compile Include="LosowanieBezPowtorzen.cs" />
+    <Compile Include="Odpowiedz.cs" />
+    <Compile Include="Pomieszaj.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="ReadFromExcel.cs" />
+    <Compile Include="ReadFromExcelv2.cs" />
     <Page Include="Logowanie.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

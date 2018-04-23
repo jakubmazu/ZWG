@@ -30,7 +30,7 @@ namespace test
 
             int rowCount = xlRange.Rows.Count;
             int colCount = xlRange.Columns.Count;
-
+            
             //iterate over the rows and columns and print to the console as it appears in the file
             //excel is not zero based!!
 
@@ -87,7 +87,7 @@ namespace test
                     }
                 }
                 // wywolanie kontstruktora Pytanie() aby wpisal wczytany wiersz z Excedo do obiektu Pytanie
-                listaPytan.Add(new Pytanie(readNrPytania, readTresc, readA, readB, readC, readD, readSekwencjaOdpowiedzi));
+        //!!!! listaPytan.Add(new Pytanie(readNrPytania, readTresc, readA, readB, readC, readD, readSekwencjaOdpowiedzi));
 
                 //Console.WriteLine(readNrPytania.ToString() + readTresc + readA + readB + readC + readD + readSekwencjaOdpowiedzi);
                 //listaPytan[aktualnePytanie].WyswietlPytanie();

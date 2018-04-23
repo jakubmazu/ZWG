@@ -29,7 +29,7 @@ namespace test
             // kolejne kolumny to sekwencje odpowiedzi wczytane z Excela z lista pytan
             for (int i = 0; i < listaPytan.Count; i++)
             {
-                writer.Write(listaPytan[i].GetSekwencjaOdpowiedzi().ToString());
+//writer.Write(listaPytan[i].GetSekwencjaOdpowiedzi().ToString());
                 writer.Write(";");  // wpisanie ; o=powoduje przejście do komórki po prawej stronie
             }
             writer.Close();         // zamyka i zapisuje plik CSV (wypelnia go danymi [jesli go nie bedzie utworzony plik bedzie pusty])

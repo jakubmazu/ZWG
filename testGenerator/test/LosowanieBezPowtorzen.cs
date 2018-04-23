@@ -10,16 +10,16 @@ namespace test
         /// <summary>
         /// Losowanie bez powtorzen
         /// </summary>
-        /// <param name="n">Liczby od 1 do n</param>
-        /// <param name="k">Ile liczb wylosowac</param>
+        /// <param name="n">zakres liczb n (Liczby od 0 do n-1)</param>
+        /// <param name="k">Ile liczb (z "n") wylosowac</param>
         /// <returns></returns>
         public static int[] Losowanie(int n, int k)
         {
             Random rand = new Random();
-            // wypełnianie tablicy liczbami 1,2...n
+            // wypełnianie tablicy liczbami 1,2...n-1
             int[] numbers = new int[n];
             for (int i = 0; i < n; i++)
-                numbers[i] = i + 1;
+                numbers[i] = i;
 
             int[] wylosowane = new int[n];
 
@@ -35,7 +35,7 @@ namespace test
                 //Console.WriteLine(numbers[r]);
 
                 // przeniesienia ostatniego elementu do miejsca z którego wzięliśmy
-                numbers[r] = numbers[n - 1];
+                numbers[r] = numbers[n-1];
                 n--;
             }
             return wylosowane;
