@@ -112,15 +112,15 @@ namespace test
             checker.checkTest(TextIdTestuPob.Text);
         }
 
-        private void buttonBPolacz_Click(object sender, RoutedEventArgs e)
-        {
-            bool check = connector.createNewDBConnection(BSource.Text, TextBLogin.Text, BPassword.Password);
-            if (check == true) TextPolBaza.Content = "Połączono";
-        }
 
         private void buttonPobierzTesty_Click(object sender, RoutedEventArgs e)
         {
             connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
+        }
+
+        private void Viewbox_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
         }
     }
 }
