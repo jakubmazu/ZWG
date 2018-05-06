@@ -118,7 +118,7 @@ namespace test
             reader.Close();
         }
 
-        public bool checkTest(string testid)
+        public bool checkTest(string testid, double[] partition)
         {
             if (answers == null || key == null)
             {
@@ -131,11 +131,18 @@ namespace test
                 int studentsNumber;
                 int points;
                 double percentage;
+                double[] mark;
+                int[] marks;
+                double[] marks_percentage;
+                int count_marks;
                 questionNumber = key.Count();
                 studentsNumber = answers.GetLength(0);
 
+                marks = new int[7];
+                marks_percentage = new double[7];
                 //deklaracja rozmiarów tablicy wyników
                 results = new string[studentsNumber, questionNumber];
+                mark = new double[studentsNumber];
 
                 for (int o = 0; o < studentsNumber; o++)
                 {
@@ -158,19 +165,73 @@ namespace test
                     percentage = (Math.Round(percentage, 2)*100);
                     results[o, 1] = points.ToString();
                     results[o, 2] = percentage.ToString()+"%";
+
+                    if (percentage >= partition[0])
+                    {
+                        mark[o] = 5.5;
+                        marks[0]++;
+                    }
+                    else if (percentage >= partition[1])
+                    {
+                        mark[o] = 5;
+                        marks[1]++;
+                    }
+                    else if (percentage >= partition[2])
+                    {
+                        mark[o] = 4.5;
+                        marks[2]++;
+                    }
+                    else if (percentage >= partition[3])
+                    {
+                        mark[o] = 4;
+                        marks[3]++;
+                    }
+                    else if (percentage >= partition[4])
+                    {
+                        mark[o] = 3.5;
+                        marks[4]++;
+                    }
+                    else if (percentage >= partition[5])
+                    {
+                        mark[o] = 3;
+                        marks[5]++;
+                    }
+                    else
+                    {
+                        mark[o] = 2;
+                        marks[6]++;
+                    }
                 }
 
+                count_marks = marks[0] + marks[1] + marks[2] + marks[3] + marks[4] + marks[5] + marks[6];
                 //wpisanie wyników do pliku
                 StreamWriter writer = new StreamWriter("Results_" + testid + ".csv");
 
                 writer.WriteLine("Test: " + testid +";Max: "+questionNumber.ToString());
-                writer.Write("Student_index;Points;");
-                writer.WriteLine("Percentage");
+                writer.Write("Student_index;Points;Percentage;");
+                writer.WriteLine("Mark");
 
                 for (int o = 0; o < studentsNumber; o++)
                 {
-                    writer.Write(results[o, 0] + ";" + results[o, 1] + ";");
-                    writer.WriteLine(results[o, 2].ToString());
+                    writer.Write(results[o, 0] + ";" + results[o, 1] + ";" + results[o, 2].ToString() +";");
+                    writer.WriteLine(mark[o]);
+                }
+
+                writer.WriteLine(" ");
+                writer.WriteLine("Statistics");
+                writer.WriteLine("Mark;Quantity;Percentage");
+                for (int i=0; i<7; i++)
+                {
+                    marks_percentage[i] = (float)marks[i] / (float)count_marks;
+                    marks_percentage[i] = (Math.Round(marks_percentage[i], 2) * 100);
+                    if (i != 6)
+                    {
+                        writer.WriteLine((5.5 - i * 0.5) + ";" + marks[i] + ";" + marks_percentage[i] + "%");
+                    }
+                    else
+                    {
+                        writer.WriteLine("2" + ";" + marks[i] + ";" + marks_percentage[i] + "%");
+                    }
                 }
 
                 writer.Close();

@@ -24,6 +24,10 @@ namespace test
         public Main2()
         {
             InitializeComponent();
+            /*if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
+            {
+                TextPolBaza.Content = "Połączono";
+            }*/
         }
 
         private void buttonPolBaza_Click(object sender, RoutedEventArgs e)
@@ -108,10 +112,18 @@ namespace test
 
         private void buttonSprawdz_Click(object sender, RoutedEventArgs e)
         {
+            double[] Tab;
+            Tab = new double[6];
+            Tab[0] = 95;
+            Tab[1] = 90;
+            Tab[2] = 80;
+            Tab[3] = 70;
+            Tab[4] = 60;
+            Tab[5] = 50;
             checker.readAnswers("Answers_" + TextIdTestuPob.Text + ".csv");
             int answerNumb = connector.returnAnswersNumber(Int32.Parse(TextIdTestuPob.Text));
             checker.readKey("Key_" +TextIdTestuPob.Text + ".csv", answerNumb);
-            checker.checkTest(TextIdTestuPob.Text);
+            checker.checkTest(TextIdTestuPob.Text, Tab);
         }
 
 
