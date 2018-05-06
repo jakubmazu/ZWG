@@ -33,6 +33,8 @@ namespace test
 
         private void buttonGenerujTest_Click(object sender, RoutedEventArgs e)
         {
+            // bla bla bla - komantarz do usunięcia
+
             //int id =  connector.writeNewTestInfo(TextNazwaTestu.Text, Int32.Parse(TextLiczbaPytan.Text), Int32.Parse(TextLiczbaOdp.Text));
             int id = 5;                   // do testow
 
