@@ -60,6 +60,7 @@ namespace test
         public bool createNewDBConnection(string name, string login, string pass)
         {
             string constr = "Data Source=" + name + "; User Id=" + login + "; Password=" + pass + ";";
+            //string constr = "Data Source=//192.168.43.155:1522/xe; User ID=hr; Password=mikulec32;"; //Not working
             connection = new OracleConnection(constr);
             
             connection.ConnectionString = constr;

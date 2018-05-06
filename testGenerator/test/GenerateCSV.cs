@@ -26,10 +26,21 @@ namespace test
             writer.Write(testName.ToString());
             writer.Write(";");      // wpisanie ; o=powoduje przejście do komórki po prawej stronie
 
+            string text;
+            char[] cArray;
+            string reverse = String.Empty; 
+
             // kolejne kolumny to sekwencje odpowiedzi wczytane z Excela z lista pytan
             for (int i = 0; i < listaPytan.Count; i++)
             {
-                writer.Write(listaPytan[i].GetSekwencjaOdpowiedzi().ToString());
+                text = listaPytan[i].GetSekwencjaOdpowiedzi().ToString();
+                cArray = text.ToCharArray();
+                reverse = String.Empty;
+                for (int o = cArray.Length - 1; o > -1; o--)
+                {
+                    reverse += cArray[o];
+                }
+                writer.Write(reverse);
                 writer.Write(";");  // wpisanie ; o=powoduje przejście do komórki po prawej stronie
             }
             writer.Close();         // zamyka i zapisuje plik CSV (wypelnia go danymi [jesli go nie bedzie utworzony plik bedzie pusty])
