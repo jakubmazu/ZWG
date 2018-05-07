@@ -98,7 +98,7 @@ namespace test
             int answersNumber = drInfo.GetInt32(0);
 
 
-            StreamWriter writer = new StreamWriter("Answers_" + id_test + ".csv");
+            StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\Answers_" + id_test + ".csv");
 
             writer.Write("idTestu;testName;studentId;");
 

@@ -28,7 +28,7 @@ namespace test
             int count = 0;
             int k = 1;
 
-            StreamReader reader = new StreamReader(fileName);
+            StreamReader reader = new StreamReader("..\\..\\..\\Files\\" + fileName);
 
             //przeliczenie liczby studentow
             do
@@ -81,7 +81,7 @@ namespace test
             string[] words;
             string check;
 
-            StreamReader reader = new StreamReader(fileName);
+            StreamReader reader = new StreamReader("..\\..\\..\\Files\\" + fileName);
 
             //odczyt pierwszej linii, przeliczenie odpowiedzi
             check = reader.ReadLine();
@@ -205,7 +205,7 @@ namespace test
 
                 count_marks = marks[0] + marks[1] + marks[2] + marks[3] + marks[4] + marks[5] + marks[6];
                 //wpisanie wyników do pliku
-                StreamWriter writer = new StreamWriter("Results_" + testid + ".csv");
+                StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\Results_" + testid + ".csv");
 
                 writer.WriteLine("Test: " + testid +";Max: "+questionNumber.ToString());
                 writer.Write("Student_index;Points;Percentage;");

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace test
 {
@@ -20,14 +21,15 @@ namespace test
     {
         dataBaseConnector connector = new dataBaseConnector();
         answersChecker checker = new answersChecker();
+        DirectoryInfo di = Directory.CreateDirectory("..\\..\\..\\Files");
 
         public Main2()
         {
             InitializeComponent();
-            /*if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
+            if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
             {
                 TextPolBaza.Content = "Połączono";
-            }*/
+            }
         }
 
         private void buttonPolBaza_Click(object sender, RoutedEventArgs e)
