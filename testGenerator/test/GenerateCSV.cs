@@ -18,7 +18,7 @@ namespace test
         public static void Generate(List<Pytanie> listaPytan, int idTestu, string testName)
         {
             // stworzenie pliku o zadanej nazwie, testName jest od uzytkownika, a idTestu jest zwracane z bazy danych
-            StreamWriter writer = new StreamWriter("Key_" + idTestu + ".csv");
+            StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\" + "Key_" + idTestu + ".csv");      // folder bin\debug\files (musi być stworzony)
 
             // pierwsze dwie kolumny to IdTestu i NazwaTestu
             writer.Write(idTestu.ToString());
