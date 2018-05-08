@@ -26,10 +26,10 @@ namespace test
         public Main2()
         {
             InitializeComponent();
-            if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
+            /*if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
             {
                 TextPolBaza.Content = "Połączono";
-            }
+            }*/
         }
 
         private void buttonPolBaza_Click(object sender, RoutedEventArgs e)
