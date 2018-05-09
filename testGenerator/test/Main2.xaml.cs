@@ -195,10 +195,9 @@ namespace test
 
         private void buttonPobierzTesty_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
             connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
             buttonSprawdz.IsEnabled = true;
-=======
+
             try
             {
                 connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
@@ -209,7 +208,6 @@ namespace test
             {
                 MessageBox.Show(ex.Message.ToString() + Environment.NewLine + "Problem with downloading answers");
             }
->>>>>>> 1180242635973e4c49ce0be8bc99c5e82d055413
         }
 
         private void Viewbox_ImageFailed(object sender, ExceptionRoutedEventArgs e)
