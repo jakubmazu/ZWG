@@ -22,13 +22,21 @@ namespace test
         dataBaseConnector connector = new dataBaseConnector();
         answersChecker checker = new answersChecker();
         DirectoryInfo di = Directory.CreateDirectory("..\\..\\..\\Files");
+        DirectoryInfo di2 = Directory.CreateDirectory("..\\..\\..\\Tests");
 
         public Main2()
         {
             InitializeComponent();
-            /*if(connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
+            /*try
             {
-                TextPolBaza.Content = "Połączono";
+                if (connector.createNewDBConnection("ORCL", "SYSTEM", "Pentaxk2s"))
+                {
+                    TextPolBaza.Content = "Połączono";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString()+ Environment.NewLine+ "Problem with Database connection");
             }*/
         }
 
@@ -114,6 +122,7 @@ namespace test
 
         private void buttonSprawdz_Click(object sender, RoutedEventArgs e)
         {
+            bool check = true;
             double[] Tab;
             Tab = new double[6];
             Tab[0] = 95;
@@ -122,16 +131,56 @@ namespace test
             Tab[3] = 70;
             Tab[4] = 60;
             Tab[5] = 50;
-            checker.readAnswers("Answers_" + TextIdTestuPob.Text + ".csv");
-            int answerNumb = connector.returnAnswersNumber(Int32.Parse(TextIdTestuPob.Text));
-            checker.readKey("Key_" +TextIdTestuPob.Text + ".csv", answerNumb);
-            checker.checkTest(TextIdTestuPob.Text, Tab);
+
+            try
+            {
+                try
+                {
+                    checker.readAnswers("Answers_" + TextIdTestuPob.Text + ".csv");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString() + Environment.NewLine + "Not found: answers for this test");
+                    check = false;
+                }
+                int answerNumb = connector.returnAnswersNumber(Int32.Parse(TextIdTestuPob.Text));
+
+                try
+                {
+                    checker.readKey("Key_" + TextIdTestuPob.Text + ".csv", answerNumb);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString() + Environment.NewLine + "Not found: key for this test");
+                    check = false;
+                }
+
+                checker.checkTest(TextIdTestuPob.Text, Tab);
+
+                if (check)
+                {
+                    MessageBox.Show("Test checked");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + "Problem with test checking");
+            }
         }
 
 
         private void buttonPobierzTesty_Click(object sender, RoutedEventArgs e)
         {
-            connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
+            try
+            {
+                connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
+                MessageBox.Show("Answers downloaded from database");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + Environment.NewLine + "Problem with downloading answers");
+            }
         }
 
         private void Viewbox_ImageFailed(object sender, ExceptionRoutedEventArgs e)
