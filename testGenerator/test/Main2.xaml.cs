@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using Microsoft.Win32;
 
 namespace test
 {
@@ -32,13 +33,36 @@ namespace test
             }*/
         }
 
-        private void buttonPolBaza_Click(object sender, RoutedEventArgs e)
+        private void buttonBazaPytan_Click(object sender, RoutedEventArgs e)
         {
-            
+            //[Ania]
+            //tutaj wybierany jest plik z bazą pytań
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.DefaultExt = "xlsx";
+
+            openFileDialog1.Filter = "Text files (*.xlsx)|*.xlsx"; //format pliku
+            openFileDialog1.ShowDialog();
+            string strfilename = openFileDialog1.InitialDirectory + openFileDialog1.FileName;
+
+            // DO MARCINA - zwrocę Ci sciezke do pliku, potrzebuje liczby pytan i liczby odp, czyli w sumie trzeba przekleic to co jest na dole
+            TextLiczbaPytan.IsEnabled = true;
+            TextLiczbaOdp.IsEnabled = true;
+            sliderOdp.IsEnabled = true;
+            sliderPyt.IsEnabled = true;
+            buttonGenerujTest.IsEnabled = true;
         }
 
         private void buttonGenerujTest_Click(object sender, RoutedEventArgs e)
         {
+            //[Ania]
+            //tutaj bedzie ttylko generowany teest
+
+            //boole do losowych
+            bool losowyUkladPytan = (LosPyt.IsChecked).Value;
+            bool losowyUkladOdp = (LosOdp.IsChecked).Value;
+
+
             // bla bla bla - komantarz do usunięcia
 
             //int id =  connector.writeNewTestInfo(TextNazwaTestu.Text, Int32.Parse(TextLiczbaPytan.Text), Int32.Parse(TextLiczbaOdp.Text));
@@ -132,11 +156,14 @@ namespace test
         private void buttonPobierzTesty_Click(object sender, RoutedEventArgs e)
         {
             connector.readAnswers(Int32.Parse(TextIdTestuPob.Text));
+            buttonSprawdz.IsEnabled = true;
         }
 
         private void Viewbox_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
 
         }
+
+       
     }
 }
