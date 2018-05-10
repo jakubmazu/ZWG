@@ -5,7 +5,7 @@
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:converter="clr-namespace:test"
 		mc:Ignorable="d"
-		Title="TestGenerator" Height="700" Width="800" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="White">
+		Title="TestGenerator" Height="700" Width="600" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="White">
 	<Window.Resources>
 		<converter:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
 		<Style TargetType="Button">
@@ -34,7 +34,7 @@
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="60"/>
+			<RowDefinition Height="50"/>
 			<RowDefinition Height="640"/>
 		</Grid.RowDefinitions>
 		<Grid x:Name="Top" Grid.Row="0">
@@ -42,20 +42,17 @@
 			<StackPanel>
 			<DockPanel>
 				<Menu DockPanel.Dock="Top">
-						<MenuItem Header="_Plik">
-							<MenuItem Header="Nowy test"/>
-							<MenuItem Header="Otwórz test"/>
-							<MenuItem Header="Zapisz test"/>
-							<MenuItem x:Name="Exit" Header="Wyjście" Click="Exit_Click"/>
-						</MenuItem>
-						<MenuItem Header="_Ustawienia">
+						<MenuItem x:Name="Exit" Header="Wyjście" Click="Exit_Click"/>
+							
+						<!--<MenuItem Header="_Ustawienia">
 							<MenuItem Header="Motyw">
 								<MenuItem Header="Biały"/>
 								<MenuItem Header="Czarny"/>
 								<MenuItem Header="Kolor"/>
 							</MenuItem>
-						</MenuItem>
+						</MenuItem>-->
 						<MenuItem Header="Profil">
+							<MenuItem Header="Dodaj konto" x:Name="DodajKonto" Click="DodajKonto_Click"/>
 							<MenuItem Header="Zmień nazwę"/>
 							<MenuItem Header="Zmień hasło"/>
 							<MenuItem x:Name="Wyloguj" Header="Wyloguj" Click="Wyloguj_Click"/>
@@ -66,12 +63,12 @@
 			</StackPanel>
 			<WrapPanel Margin="0,10,0,0">
 				<WrapPanel HorizontalAlignment="Right">
-					<Label Content="zalogowany:" Padding="5" Margin="10,10,10,10"/>
-					<TextBlock x:Name="zalogowany" Padding="5" Margin="0,10,10,10" Text="konto publiczne"/>
+					<Label Content="Profil:" Padding="5" Margin="10,10,0,0"/>
+					<TextBlock x:Name="zalogowany" Padding="5" Margin="0,10,10,0" Text="konto publiczne"/>
 				</WrapPanel>
 				<WrapPanel>
-					<Label Content="Połączenie z bazą danych:" Margin="10,10,-3,10" Padding="5"/>
-					<Label x:Name="TextPolBaza" Content="brak połączenia" Margin="0,10,10,10" Padding="5"/>
+					<Label Content="Połączenie z bazą danych:" Margin="10,10,-3,0" Padding="5"/>
+					<Label x:Name="TextPolBaza" Content="brak połączenia" Margin="0,10,10,0" Padding="5"/>
 				</WrapPanel>
 			</WrapPanel>
 		</Grid>
@@ -81,8 +78,8 @@
 			</Grid.ColumnDefinitions>
 			<Grid Grid.Column="0" >
 				<StackPanel>
-					<ToggleButton x:Name="buttonGenerowanie" Content="Generowanie testu" Padding="5" Margin="10,10,10,10" IsChecked="True"/>
-					<GroupBox x:Name="PopGenerowanie" Visibility="{Binding ElementName=buttonGenerowanie, Path=IsChecked, Converter={StaticResource BoolVisibilityConverter}}" Padding="5">
+					<ToggleButton x:Name="buttonGenerowanie" Content="Generowanie testu" Padding="5" Margin="10,10,10,10" IsChecked="false"/>
+					<GroupBox x:Name="PopGenerowanie" Visibility="Visible" Padding="5">
 						<StackPanel>
 							<WrapPanel>
 								<Label Content="Nazwa testu:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
@@ -110,8 +107,8 @@
 							</WrapPanel>
 						</StackPanel>
 					</GroupBox>
-					<ToggleButton x:Name="buttonSprawdzanie" Content="Sprawdzanie testu" Padding="5" Margin="10,10,10,10" IsChecked="True"/>
-					<GroupBox Visibility="{Binding ElementName=buttonSprawdzanie, Path=IsChecked, Converter={StaticResource BoolVisibilityConverter}}" Padding="5" Margin="10">
+					<ToggleButton x:Name="buttonSprawdzanie" Content="Sprawdzanie testu" Padding="5" Margin="10,10,10,10" IsChecked="False"/>
+					<GroupBox Visibility="Visible" Padding="5" Margin="10">
 						<StackPanel>
 							<WrapPanel>
 								<Label Content="Id testu:" Margin="10" Padding="5" Width="200" HorizontalContentAlignment="Right"/>
@@ -123,7 +120,7 @@
 								<TextBlock x:Name="TextIloscPobrTestow" MinWidth="100" Margin="10" Padding="5"/>
 							</WrapPanel>
 							<WrapPanel>
-								<Label Content="3" Padding="5" Margin="200,10,0,10"/>
+								<Label Content="Progi:   3" Padding="5" Margin="5,10,0,10"/>
 								<TextBox x:Name="Prog3" Width="30" Margin="0,10" Padding="5"/>
 								<Label Content="%" Padding="5" Margin="0,10"/>
 								<Label Content="3,5" Padding="5" Margin="10,10,0,10"/>

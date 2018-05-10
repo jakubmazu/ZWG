@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:test"
         mc:Ignorable="d"
-        Title="Logowanie" Height="360" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="White" WindowStartupLocation="CenterScreen">
+        Title="Logowanie" Height="320" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="White" WindowStartupLocation="CenterScreen">
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="50*"></ColumnDefinition>
@@ -30,7 +30,6 @@
 			</WrapPanel>
 			<Label x:Name="KomH" Content="" HorizontalAlignment="Center" Padding="5" Margin="40,0,0,0" FontSize="8" FontFamily="Maiandra GD" Foreground="#FFF90000"/>
 			<Button x:Name="buttonZaloguj" Content="zaloguj" Padding="5" Margin="40,10,10,10" Width="100" FontFamily="Maiandra GD" Click="buttonZaloguj_Click" Background="White" BorderBrush="Black"/>
-			<Button x:Name="buttonNowyProfil" Content="nowe konto" Width="100" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Background="White" Click="buttonNowyProfil_Click" BorderBrush="Black"/>
 			<Button x:Name="buttonPubliczny" Content="konto publiczne" Width="100" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Background="White" Click="buttonPubliczny_Click" BorderBrush="Black"/>
 		</StackPanel>
 	</Grid>

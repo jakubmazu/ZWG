@@ -69,19 +69,18 @@ namespace test
             Application.Current.Properties["Login"] = "profil publiczny";
             Application.Current.Properties["ConnectedStatus"] = "brak";
             nowy2.zalogowany.Text = Application.Current.Properties["Login"].ToString();
-            
+
+            if(Application.Current.Properties["Login"].ToString() == "admin")
+                nowy2.DodajKonto.IsEnabled = true;
+            else
+                nowy2.DodajKonto.IsEnabled = false;
+
 
             //nowy.TextNazwaTestu.Text = Application.Current.Properties["Login"].ToString();
-           //nowy.TextPolBaza.Text = Application.Current.Properties["ConnectedStatus"].ToString();
+            //nowy.TextPolBaza.Text = Application.Current.Properties["ConnectedStatus"].ToString();
 
             Close();
         }
 
-        private void buttonNowyProfil_Click(object sender, RoutedEventArgs e)
-        {
-            (new NowyProfil()).Show();
-
-            Close();
-        }
     }
 }

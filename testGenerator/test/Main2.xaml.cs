@@ -215,6 +215,11 @@ namespace test
 
         }
 
-       
+        private void DodajKonto_Click(object sender, RoutedEventArgs e)
+        {
+            (new NowyProfil()).Show();
+
+
+        }
     }
 }
