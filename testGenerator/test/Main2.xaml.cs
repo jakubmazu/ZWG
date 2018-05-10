@@ -149,12 +149,12 @@ namespace test
             bool check = true;
             double[] Tab;
             Tab = new double[6];
-            Tab[0] = 95;
-            Tab[1] = 90;
-            Tab[2] = 80;
-            Tab[3] = 70;
-            Tab[4] = 60;
-            Tab[5] = 50;
+            Tab[0] = Int32.Parse(Prog55.Text);
+            Tab[1] = Int32.Parse(Prog5.Text);
+            Tab[2] = Int32.Parse(Prog45.Text);
+            Tab[3] = Int32.Parse(Prog4.Text);
+            Tab[4] = Int32.Parse(Prog35.Text);
+            Tab[5] = Int32.Parse(Prog3.Text);
 
             try
             {
