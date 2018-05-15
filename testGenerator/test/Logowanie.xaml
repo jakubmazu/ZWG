@@ -8,20 +8,38 @@
         Title="Logowanie" Height="320" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="black" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
 		<Style TargetType="Button">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="BorderBrush" Value="#a4a4a4" />
 			<Setter Property="Background" Value="#13BEEB" />
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
-		<Style TargetType="Label">
+		<Style TargetType="ToggleButton">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="BorderBrush" Value="#a4a4a4" />
+			<Setter Property="Background" Value="#13BEEB" />
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="CheckBox">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="FontFamily" Value="Maiandra GD"/>
 			<Setter Property="Foreground" Value="#a4a4a4"/>
-
+		</Style>
+		<Style TargetType="MenuItem">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontFamily" Value="Maiandra GD"/>
+			<Setter Property="Foreground" Value="#a4a4a4"/>
 		</Style>
 		<Style TargetType="TextBox">
 			<Setter Property="Background" Value="black"/>
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 			<Setter Property="BorderBrush" Value="#13BEEB"/>
 			<Setter Property="Foreground" Value="#13BEEB"/>
+		</Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="PasswordBox">
 			<Setter Property="Background" Value="Black"/>
@@ -52,8 +70,8 @@
 				<PasswordBox x:Name="Password" Padding="5" Margin="0,10,10,10" Width="150" KeyDown="OnKeyDownHandler"/>
 			</WrapPanel>
 			<Label x:Name="KomH" Content="" HorizontalAlignment="Center" Padding="5" Margin="40,0,0,0" FontSize="8" FontFamily="Maiandra GD" Foreground="#FFF90000"/>
-			<Button x:Name="buttonZaloguj" Content="zaloguj" Padding="5" Margin="40,10,10,10" Width="100" FontFamily="Maiandra GD" Click="buttonZaloguj_Click" FontWeight="Bold" />
-			<Button x:Name="buttonPubliczny" Content="konto publiczne" Width="100" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Click="buttonPubliczny_Click" FontWeight="Bold"/>
+			<Button x:Name="buttonZaloguj" Content="zaloguj" Padding="5" Margin="40,10,10,10" Width="120" FontFamily="Maiandra GD" Click="buttonZaloguj_Click" FontWeight="Bold" />
+			<Button x:Name="buttonPubliczny" Content="konto publiczne" Width="120" Padding="5" Margin="40,10,10,10" FontFamily="Maiandra GD" Click="buttonPubliczny_Click" FontWeight="Bold"/>
 		</StackPanel>
 	</Grid>
 </Window>

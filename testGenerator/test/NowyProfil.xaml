@@ -8,20 +8,38 @@
         Title="Nowy Profil" Height="300" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="black" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
 		<Style TargetType="Button">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="BorderBrush" Value="#a4a4a4" />
 			<Setter Property="Background" Value="#13BEEB" />
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
-		<Style TargetType="Label">
+		<Style TargetType="ToggleButton">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="BorderBrush" Value="#a4a4a4" />
+			<Setter Property="Background" Value="#13BEEB" />
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="CheckBox">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="FontFamily" Value="Maiandra GD"/>
 			<Setter Property="Foreground" Value="#a4a4a4"/>
-
+		</Style>
+		<Style TargetType="MenuItem">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
+		</Style>
+		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontFamily" Value="Maiandra GD"/>
+			<Setter Property="Foreground" Value="#a4a4a4"/>
 		</Style>
 		<Style TargetType="TextBox">
 			<Setter Property="Background" Value="black"/>
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 			<Setter Property="BorderBrush" Value="#13BEEB"/>
 			<Setter Property="Foreground" Value="#13BEEB"/>
+		</Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="PasswordBox">
 			<Setter Property="Background" Value="Black"/>

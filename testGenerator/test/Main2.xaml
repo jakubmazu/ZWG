@@ -9,16 +9,19 @@
 	<Window.Resources>
 		<converter:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
 		<Style TargetType="Button">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="BorderBrush" Value="#a4a4a4" />
 			<Setter Property="Background" Value="#13BEEB" />
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="ToggleButton">
+			<Setter Property="FontSize" Value="18"/>
 			<Setter Property="BorderBrush" Value="#a4a4a4" />
 			<Setter Property="Background" Value="#13BEEB" />
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="CheckBox">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="FontFamily" Value="Maiandra GD"/>
 			<Setter Property="Foreground" Value="#a4a4a4"/>
 		</Style>
@@ -26,6 +29,7 @@
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="13"/>
 			<Setter Property="FontFamily" Value="Maiandra GD"/>
 			<Setter Property="Foreground" Value="#a4a4a4"/>
 		</Style>
@@ -41,7 +45,7 @@
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="50"/>
+			<RowDefinition Height="115"/>
 			<RowDefinition Height="640"/>
 		</Grid.RowDefinitions>
 		<Grid x:Name="Top" Grid.Row="0">
@@ -57,8 +61,12 @@
 
 					</Menu>
 			</DockPanel>
+				
 			</StackPanel>
-			<WrapPanel Margin="0,10,0,0">
+			<StackPanel>
+			
+			
+			<WrapPanel Margin="0">
 				<WrapPanel HorizontalAlignment="Right">
 					<Label Content="Profil:" Padding="5" Margin="10,10,0,0" FontWeight="Bold"/>
 					<TextBlock x:Name="zalogowany" Padding="5" Margin="0,10,10,0" Text="konto publiczne" Foreground="#13BEEB"/>
@@ -68,6 +76,8 @@
 					<Label x:Name="TextPolBaza" Content="brak połączenia" Margin="0,10,10,0" Padding="5" Foreground="#13BEEB"/>
 				</WrapPanel>
 			</WrapPanel>
+				<Label Content="TestGenerator" HorizontalAlignment="Center" VerticalAlignment="Top" Height="72" FontSize="48" HorizontalContentAlignment="Center" FontFamily="Maiandra GD" Margin="10,0,10,-1"/>
+			</StackPanel>
 		</Grid>
 		<Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
