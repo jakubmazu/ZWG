@@ -5,19 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:test"
         mc:Ignorable="d"
-        Title="Nowy Profil" Height="300" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="White" WindowStartupLocation="CenterScreen">
+        Title="Nowy Profil" Height="300" Width="470" MinHeight="260" MinWidth="460" MaxHeight="500" MaxWidth="1000" Background="black" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
-			<Style TargetType="Button">
-			<Setter Property="BorderBrush" Value="Black" />
-			<Setter Property="Background" Value="White" />
+		<Style TargetType="Button">
+			<Setter Property="BorderBrush" Value="#a4a4a4" />
+			<Setter Property="Background" Value="#13BEEB" />
 			<Setter Property="FontFamily" Value="Maiandra GD" />
 		</Style>
 		<Style TargetType="Label">
-			<Setter Property="FontFamily" Value="Maiandra GD" />
+			<Setter Property="FontFamily" Value="Maiandra GD"/>
+			<Setter Property="Foreground" Value="#a4a4a4"/>
+
 		</Style>
 		<Style TargetType="TextBox">
+			<Setter Property="Background" Value="black"/>
 			<Setter Property="FontFamily" Value="Maiandra GD" />
-			<Setter Property="BorderBrush" Value="Black"/>
+			<Setter Property="BorderBrush" Value="#13BEEB"/>
+			<Setter Property="Foreground" Value="#13BEEB"/>
+		</Style>
+		<Style TargetType="PasswordBox">
+			<Setter Property="Background" Value="Black"/>
+			<Setter Property="Foreground" Value="#13BEEB"/>
+			<Setter Property="BorderBrush" Value="#13BEEB"/>
 		</Style>
 	</Window.Resources>
 	<Grid>
@@ -36,19 +45,19 @@
 		</StackPanel>
 		<StackPanel Grid.Column="1" Grid.Row="1">
 			<WrapPanel>
-				<Label Content="login:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
+				<Label Content="login:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
 				<TextBox x:Name="TextNLogin" Padding="5" Margin="0,10,10,10" MinWidth="150"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label Content="hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
-				<PasswordBox x:Name="NewPassword" Padding="5" Margin="0,10,10,10" MinWidth="150" BorderBrush="Black"/>
+				<Label Content="hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+				<PasswordBox x:Name="NewPassword" Padding="5" Margin="0,10,10,10" MinWidth="150"/>
 			</WrapPanel>
 			<WrapPanel>
-				<Label Content="powtórz hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right"/>
-				<PasswordBox x:Name="NewPassword2" Padding="5" Margin="0,10,10,10" MinWidth="150" BorderBrush="Black"/>
+				<Label Content="powtórz hasło:" Padding="5" Margin="10" Width="100" HorizontalContentAlignment="Right" FontWeight="Bold"/>
+				<PasswordBox x:Name="NewPassword2" Padding="5" Margin="0,10,10,10" MinWidth="150"/>
 			</WrapPanel>
 			<Label x:Name="KomNP" Content="" Padding="1" Margin="10,0,10,0" HorizontalAlignment="Center" FontSize="8" Foreground="#FFF90000"/>
-			<Button x:Name="buttonStworzKonto" Content="stwórz konto" Padding="5" HorizontalAlignment="Right" Margin="0"  Click="buttonStworzKonto_Click"/>
+			<Button x:Name="buttonStworzKonto" Content="stwórz konto" Padding="5" HorizontalAlignment="Right" Margin="0,0,10,0"  Click="buttonStworzKonto_Click" FontWeight="Bold"/>
 		</StackPanel>
 	</Grid>
 </Window>
