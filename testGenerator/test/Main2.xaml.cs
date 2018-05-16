@@ -54,6 +54,13 @@ namespace test
             string strfilename = openFileDialog1.InitialDirectory + openFileDialog1.FileName;
 
             // DO MARCINA - zwrocę Ci sciezke do pliku, potrzebuje liczby pytan i liczby odp, czyli w sumie trzeba przekleic to co jest na dole
+            string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
+            List<Pytanie> wszystkiePytania = new List<Pytanie>();
+            wszystkiePytania = ReadFromExcelv2.Read(lokalizacjaExcelPytania);               // wczytuje wszystkie pytania
+            int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();   // dla Ani - liczba wszystkich odpowiedzi
+            int liczbaWszystkichPytan = wszystkiePytania.Count();                           // dla Ani - liczba wszystkich pytań
+
+
             TextLiczbaPytan.IsEnabled = true;
             TextLiczbaOdp.IsEnabled = true;
             sliderOdp.IsEnabled = true;
@@ -96,7 +103,7 @@ namespace test
             //string lokalizacjaExcelPytania = "NIC";                       // Tutaj Ania uzupełni
             List <Pytanie> wszystkiePytania = new List<Pytanie>();          //Marcina zostawić
             wszystkiePytania = ReadFromExcelv2.Read(lokalizacjaExcelPytania); //tego Marcin potrzebuje
-            int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();                       // TO JEST ŹLE, TAK NIE MOZE BYĆ, NIE MAM POMYSŁU JAK TO ZEMIENIĆ (MARCIN)              
+            int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();          
             int liczbaWszystkichPytan = wszystkiePytania.Count();          // to dla Ani
 
             ////////////////////////////////////////////////////////////////////////////////////
