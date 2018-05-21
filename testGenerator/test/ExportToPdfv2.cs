@@ -28,7 +28,7 @@ namespace test
             iTextSharp.text.Font f_12_normal = new iTextSharp.text.Font(arial, 12, iTextSharp.text.Font.NORMAL);
             iTextSharp.text.Font f_12_bold = new iTextSharp.text.Font(arial, 12, iTextSharp.text.Font.BOLD);
 
-            FileStream os = new FileStream(nazwaTestu.ToString() + '_' + id + ".pdf", FileMode.Create);
+            FileStream os = new FileStream("..\\..\\..\\Files\\" + nazwaTestu.ToString() + '_' + id + ".pdf", FileMode.Create);
             using (os)
             {
                 PdfWriter.GetInstance(doc, os);
@@ -79,7 +79,7 @@ namespace test
 
                 // Open the document automatically
                 //System.Diagnostics.Process.Start(@"Tescik.pdf");
-                System.Diagnostics.Process.Start(nazwaTestu.ToString() + '_' + id + ".pdf");
+                System.Diagnostics.Process.Start("..\\..\\..\\Files\\" + nazwaTestu.ToString() + '_' + id + ".pdf");
             }
         }
     }

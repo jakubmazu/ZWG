@@ -77,25 +77,16 @@ namespace test
             bool losowyUkladPytan = (LosPyt.IsChecked).Value;
             bool losowyUkladOdp = (LosOdp.IsChecked).Value;
 
-
-            // bla bla bla - komantarz do usunięcia
-
             //int id =  connector.writeNewTestInfo(TextNazwaTestu.Text, Int32.Parse(TextLiczbaPytan.Text), Int32.Parse(TextLiczbaOdp.Text));
-            int id = 5;                   // do testow
+            int id = 5;                   // do testow, to będzie wczytywane potem z bazy od Kuby
 
-            int liczbaPytan = Int32.Parse(TextLiczbaPytan.Text);
-            //int liczbaPytan = 7;        // do testow
-            int liczbaOdpowiedzi = Int32.Parse(TextLiczbaOdp.Text);
-            //int liczbaOdpowiedzi = 5;   // do testow
-
+            int liczbaPytan = Int32.Parse(TextLiczbaPytan.Text);        // liczba wybranych pytań do wygenerowania
+            int liczbaOdpowiedzi = Int32.Parse(TextLiczbaOdp.Text);     // liczba wybranych odpowiedzi do wygenerowania
+            
             string nazwaTestu = TextNazwaTestu.Text;
             
-            //string lokalizacjaExcelPytania = ... //pobrać a okienka aplikacji
             string lokalizacjaExcelPytania = "d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\test\\bin\\Debug\\zestawPytań2.xlsx";
-            //string lokalizacjaExcelPytania = "d:\\zestawPytań2";    //KUBA TU WPISZ SWOJĄ LOKALIZAJĘ PLIKU, PAMIĘTAJ O PODWÓJNYM \\ (SLESZU) PRZY PODAWANIU FOLDERÓW
-
-            //bool checkbox // wybór ilości poprawnych odp - true tylko 1 poprawna
-
+            
             // lista obiektow Pytanie, wczytanie do niej pytan z Excela i wyswietlenie wszystkich pytan
             ////////////////////////////////////////////////////////////////////////////////////
             ///  DLA ANI /////
@@ -105,29 +96,15 @@ namespace test
             wszystkiePytania = ReadFromExcelv2.Read(lokalizacjaExcelPytania); //tego Marcin potrzebuje
             int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();          
             int liczbaWszystkichPytan = wszystkiePytania.Count();          // to dla Ani
-
             ////////////////////////////////////////////////////////////////////////////////////
-
-            //////////////// NIEPOTRZEBNE JUZ ///////////////////////////////////////
-            //int mniejszaIloscPytan = 0;                         //potrzebne do tego gdy uzytkownik poda ze chce test z wieksza liczba pytan niz ja posiada
-            //if (liczbaPytan > wszystkiePytania.Count())
-            //{
-            //    mniejszaIloscPytan = wszystkiePytania.Count();  // jezeli uzytkownik chce wiecej pytan niz posiada to robimy tyle ile posiada
-            //}
-            //else mniejszaIloscPytan = liczbaPytan;              // jezeli uzytkownik chce mniej pytan niz posiada w zbiorze to robimy tyle ile on chce
-
-
-            //losowanie bez powtorzen zeby pytania byly w losowej kolejnosci
-            int[] liczbyBezPowtorzen = new int[liczbaWszystkichPytan];
-            liczbyBezPowtorzen = LosowanieBezPowtorzen.Losowanie(wszystkiePytania.Count(), liczbaWszystkichPytan);     // ze wszystki pytan losujemy mniejsza liczbe pytan (ktora podal uzytkownik, chyba ze jest ich mniej to losujemy wszystko)
-
-            // nowa lista wszystkich pytan w losowej kolejnosci pytania i odpowiedzi
-            // ZROBIC IF'A BOOL CZY MAJA BYC PYTANIA W LOSOWEJ KOLEJNOSCI I OSOBNO CZY ODPOWIEDZI W LOSOWEJ, JESLI TAK TO POMIESZAC PYTANIA
-            wszystkiePytania = Pomieszaj.Losowo(wszystkiePytania);      // pomieszanie wszystkich pytan i odpowiedzi
-
-            // generowanie pliku *.pdf z pytaniami do testu (wczytanymi z Excela)
-            ExportToPdfv2.GenerateTest(wszystkiePytania, id, nazwaTestu, liczbaPytan);       // TO BEDZIE DZIALAC JAK TO OPRACUJEMY
             
+            if ((losowyUkladPytan) || (losowyUkladOdp))         // pomieszaj ewentualnie pytania i/lub odpowiedzi
+            {
+                wszystkiePytania = Pomieszaj.Losowo(wszystkiePytania, losowyUkladPytan, losowyUkladOdp);      // pomieszanie wszystkich pytan i odpowiedzi
+            }
+            
+            ExportToPdfv2.GenerateTest(wszystkiePytania, id, nazwaTestu, liczbaPytan);      // generowanie pliku *.pdf z pytaniami do testu (wczytanymi z Excela)
+
             //do testow stworzono idTestu I nemeTest, potem "idTestu" bedzie zwracane z bazy a uzytkownik bedzie podawal "nameTest"
             // generowanie klucza odpowiedzi do pliku *.csv, zeby potem ten plik wczytac do bazy danych
             GenerateCSV.Generate(wszystkiePytania, id, nazwaTestu);

@@ -18,7 +18,7 @@ namespace test
         public static void Generate(List<Pytanie> listaPytan, int idTestu, string testName)
         {
             // stworzenie pliku o zadanej nazwie, testName jest od uzytkownika, a idTestu jest zwracane z bazy danych
-            StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\" + "Key_" + idTestu + ".csv");      // folder bin\debug\files (musi być stworzony)
+            StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\" + "Key_" + idTestu + ".csv");
 
             // pierwsze dwie kolumny to IdTestu i NazwaTestu
             writer.Write(idTestu.ToString());
@@ -29,7 +29,12 @@ namespace test
             // kolejne kolumny to sekwencje odpowiedzi wczytane z Excela z lista pytan
             for (int i = 0; i < listaPytan.Count; i++)
             {
-//writer.Write(listaPytan[i].GetSekwencjaOdpowiedzi().ToString());
+                string tmp = "";
+                for (int j = 0; j < listaPytan[i].listaOdpowiedzi.Count() ; j++)
+                {
+                    tmp += listaPytan[i].listaOdpowiedzi[j].czyPoprawna.ToString();
+                }
+                writer.Write(tmp);
                 writer.Write(";");  // wpisanie ; o=powoduje przejście do komórki po prawej stronie
             }
             writer.Close();         // zamyka i zapisuje plik CSV (wypelnia go danymi [jesli go nie bedzie utworzony plik bedzie pusty])
