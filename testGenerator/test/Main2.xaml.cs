@@ -60,6 +60,9 @@ namespace test
             int liczbaWszystkichOdpowiedzi = wszystkiePytania[0].listaOdpowiedzi.Count();   // dla Ani - liczba wszystkich odpowiedzi
             int liczbaWszystkichPytan = wszystkiePytania.Count();                           // dla Ani - liczba wszystkich pytań
 
+            maxPytan.Content = liczbaWszystkichPytan.ToString();
+            maxOdp.Content = liczbaWszystkichOdpowiedzi.ToString();
+
 
             TextLiczbaPytan.IsEnabled = true;
             TextLiczbaOdp.IsEnabled = true;
