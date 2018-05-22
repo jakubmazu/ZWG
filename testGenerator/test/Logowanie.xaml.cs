@@ -19,6 +19,7 @@ namespace test
     /// </summary>
     public partial class Logowanie : Window
     {
+        Profile profile = new Profile();
         public Logowanie()
         {
             InitializeComponent();
@@ -27,14 +28,17 @@ namespace test
 
         private void buttonZaloguj_Click(object sender, RoutedEventArgs e)
         {
-            Profile profile = new Profile();
-            bool correct = false;
             
-            for (int i = 0; i < profile.User.Length; i++)
+            bool correct = false;
+            int n = 0;
+            
+            for (int i = 0; i < profile.Users.Count(); i++)
             {
-                if (profile.User[i] == TextLogin.Text && profile.Password[i] == Password.Password)
+                if (profile.Users[i] == TextLogin.Text && profile.Passwords[i] == Password.Password)
                 {
                     correct = true;
+                    n = i;
+                    break;
                 }
             }
             if (correct == true)
@@ -44,6 +48,11 @@ namespace test
                 Application.Current.Properties["Login"] = TextLogin.Text;
                 Application.Current.Properties["ConnectedStatus"] = "brak";
                 nowy2.zalogowany.Text = Application.Current.Properties["Login"].ToString();
+
+                // KUBA - tutaj można dodac logowanie do bazy danych, ponizej masz pobranie sciezki i hasla do bazy
+                //profile.DataBaseAdress[n];
+                //profile.DataBasePassword[n];
+
                 Close();
             }
             else

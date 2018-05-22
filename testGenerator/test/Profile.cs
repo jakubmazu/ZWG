@@ -34,15 +34,46 @@ namespace test
         // dodać ścieżkę do pliku z loginami i hasłami ---------------------    TO DO    ------------
         // szyfrowanie haseł??? ---------------------    TO DO    ------------
 
-        DataSet logs;
+        public List<string> Users = new List<string>();
+        public List<string> Passwords = new List<string>();
+        public List<string> DataBasePassword = new List<string>();
+        public List<string> DataBaseAdress = new List<string>();
+        string readTresc = "";
+
+        public void Read()
+        {
+            //Create COM Objects. Create a COM object for everything that is referenced
+            Excel.Application xlApp = new Excel.Application();
+
+            // lokalizacja pliku z baza pytan
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"D:\studia\2_Informatyka\2_1\Zastosowanie inf w gospodarce\projekt\Nowy folder\ZWG\testGenerator\logs.xlsx");
+
+            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            Excel.Range xlRange = xlWorksheet.UsedRange;
+
+            int rowCount = xlRange.Rows.Count;
+
+            for(int i = 1; i<=rowCount; i++)
+            {
+                Users.Add(xlRange.Cells[i, 1].Value2.ToString());
+                Passwords.Add(xlRange.Cells[i, 2].Value2.ToString());
+                //DataBasePassword.Add(xlRange.Cells[i, 3].Value2.ToString());
+               // DataBaseAdress.Add(xlRange.Cells[i, 4].Value2.ToString());
+            }
+
+
+        }
 
         public Profile() 
         {
+            Read();
+
+
             /*FileStream fs = File.Open("logs.xlsx", FileMode.Open, FileAccess.ReadWrite);
             IExcelDataReader reader = ExcelReaderFactory.CreateBinaryReader(fs);
             logs = reader as DataSet;   */
 
-            User = new string[3];
+            /*User = new string[3];
             User[0] = "aa";
             User[1] = "bb";
             User[2] = "admin";
@@ -50,7 +81,7 @@ namespace test
             Password = new string[3];
             Password[0] = "aa";
             Password[1] = "bb";
-            Password[2] = "admin";
+            Password[2] = "admin";*/
         }
     }
 }
