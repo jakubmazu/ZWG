@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -36,9 +37,8 @@ namespace test
 
         public List<string> Users = new List<string>();
         public List<string> Passwords = new List<string>();
-        public List<string> DataBasePassword = new List<string>();
-        public List<string> DataBaseAdress = new List<string>();
-        string readTresc = "";
+       // public List<string> DataBasePassword = new List<string>();
+        //public List<string> DataBaseAdress = new List<string>();
 
         public void Read()
         {
@@ -61,7 +61,25 @@ namespace test
                // DataBaseAdress.Add(xlRange.Cells[i, 4].Value2.ToString());
             }
 
+            //cleanup
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
+            //rule of thumb for releasing com objects:
+            //  never use two dots, all COM objects must be referenced and released individually
+            //  ex: [somthing].[something].[something] is bad
+
+            //release com objects to fully kill excel process from running in the background
+            Marshal.ReleaseComObject(xlRange);
+            Marshal.ReleaseComObject(xlWorksheet);
+
+            //close and release
+            xlWorkbook.Close();
+            Marshal.ReleaseComObject(xlWorkbook);
+
+            //quit and release
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
         }
 
         public Profile() 

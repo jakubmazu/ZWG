@@ -49,10 +49,6 @@ namespace test
                 Application.Current.Properties["ConnectedStatus"] = "brak";
                 nowy2.zalogowany.Text = Application.Current.Properties["Login"].ToString();
 
-                // KUBA - tutaj można dodac logowanie do bazy danych, ponizej masz pobranie sciezki i hasla do bazy
-                //profile.DataBaseAdress[n];
-                //profile.DataBasePassword[n];
-
                 Close();
             }
             else
