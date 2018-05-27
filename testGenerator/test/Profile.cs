@@ -46,7 +46,9 @@ namespace test
             Excel.Application xlApp = new Excel.Application();
 
             // lokalizacja pliku z baza pytan
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"D:\studia\2_Informatyka\2_1\Zastosowanie inf w gospodarce\projekt\Nowy folder\ZWG\testGenerator\logs.xlsx");
+            //Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"D:\studia\2_Informatyka\2_1\Zastosowanie inf w gospodarce\projekt\Nowy folder\ZWG\testGenerator\logs.xlsx");
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open("d:\\Marcin\\Szkoła\\Polibuda\\[INF mgr] I rok I semestr (2018 lato)\\Zastosowania inform. w gospod\\P - Zastosowania inform. w gospod\\Repo - wspólne\\testGenerator\\logs.xlsx");
+            
 
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
