@@ -110,7 +110,7 @@ namespace test
 
             //do testow stworzono idTestu I nemeTest, potem "idTestu" bedzie zwracane z bazy a uzytkownik bedzie podawal "nameTest"
             // generowanie klucza odpowiedzi do pliku *.csv, zeby potem ten plik wczytac do bazy danych
-            GenerateCSV.Generate(wszystkiePytania, id, nazwaTestu);
+            GenerateCSV.Generate(wszystkiePytania, id, nazwaTestu, liczbaPytan);
             
         }
 

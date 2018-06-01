@@ -15,7 +15,7 @@ namespace test
         /// <param name="listaPytan">lista obiektow Pytanie, wczytana z Excela</param>
         /// <param name="idTestu">idTestu zwrocone z bazy danych</param>
         /// <param name="testName">nazwa testu podawana przez uzytkownika</param>
-        public static void Generate(List<Pytanie> listaPytan, int idTestu, string testName)
+        public static void Generate(List<Pytanie> listaPytan, int idTestu, string testName, int iloscPytan)
         {
             // stworzenie pliku o zadanej nazwie, testName jest od uzytkownika, a idTestu jest zwracane z bazy danych
             StreamWriter writer = new StreamWriter("..\\..\\..\\Files\\" + "Key_" + idTestu + ".csv");
@@ -27,7 +27,7 @@ namespace test
             writer.Write(";");      // wpisanie ; o=powoduje przejście do komórki po prawej stronie
 
             // kolejne kolumny to sekwencje odpowiedzi wczytane z Excela z lista pytan
-            for (int i = 0; i < listaPytan.Count; i++)
+            for (int i = 0; i < iloscPytan; i++)
             {
                 string tmp = "";
                 for (int j = 0; j < listaPytan[i].listaOdpowiedzi.Count() ; j++)
